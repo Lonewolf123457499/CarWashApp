@@ -1,0 +1,60 @@
+/* Clean, modern animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Smooth page load animations */
+body {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Hero section animations */
+section:first-of-type {
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Feature cards hover effects */
+.group:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .text-6xl {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+}

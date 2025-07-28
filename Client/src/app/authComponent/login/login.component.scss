@@ -1,0 +1,326 @@
+/* Floating Background Orbs */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05));
+  backdrop-filter: blur(20px);
+  animation: floatOrb 15s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 150px;
+  height: 150px;
+  top: 70%;
+  right: 20%;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  right: 10%;
+  animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translateY(-30px) translateX(20px) rotate(120deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translateY(20px) translateX(-20px) rotate(240deg);
+    opacity: 0.4;
+  }
+}
+
+/* Login Container Animation */
+.login-container {
+  animation: containerSlideIn 1s ease-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@keyframes containerSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* Car Showcase Animations */
+.car-showcase {
+  animation: carShowcase 1.5s ease-out 0.3s both;
+}
+
+.car-float {
+  animation: carFloat 4s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes carShowcase {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes carFloat {
+  0%, 100% {
+    transform: translateY(0px) rotateY(-5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateY(5deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+/* Spotlight Animation */
+.spotlight-animation {
+  animation: spotlightMove 8s ease-in-out infinite;
+  transform-origin: top left;
+}
+
+@keyframes spotlightMove {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: rotate(5deg) scale(1.1);
+  }
+}
+
+/* Floating Particles */
+.floating-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+.particle-3 {
+  bottom: 30%;
+  left: 70%;
+  animation-delay: 3s;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Form Section Animation */
+.form-section {
+  animation: formSlideIn 1s ease-out 0.5s both;
+}
+
+@keyframes formSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Logo 3D Animation */
+.logo-3d {
+  animation: logoFloat 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.logo-3d:hover {
+  transform: rotateY(360deg) scale(1.1);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Title Animation */
+.title-animation {
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.2);
+  }
+}
+
+/* Input Group Animations */
+.input-group {
+  animation: inputSlideIn 0.8s ease-out both;
+}
+
+.input-group:nth-child(1) { animation-delay: 0.7s; }
+.input-group:nth-child(2) { animation-delay: 0.9s; }
+
+@keyframes inputSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3D Input Effects */
+.input-3d {
+  transition: all 0.3s ease;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+.input-3d:focus {
+  transform: perspective(1000px) rotateX(-2deg) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.2);
+}
+
+.input-3d:hover {
+  transform: perspective(1000px) rotateX(-1deg) translateY(-1px);
+}
+
+/* 3D Button Effects */
+.btn-3d {
+  transition: all 0.3s ease;
+  transform: perspective(1000px) rotateX(0deg);
+  animation: buttonSlideIn 1s ease-out 1.1s both;
+}
+
+.btn-3d:hover:not(:disabled) {
+  transform: perspective(1000px) rotateX(-5deg) translateY(-3px);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.4);
+}
+
+.btn-3d:active:not(:disabled) {
+  transform: perspective(1000px) rotateX(-2deg) translateY(-1px);
+}
+
+@keyframes buttonSlideIn {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-10deg) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+
+/* Error Animation */
+.error-animation {
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .floating-orb {
+    display: none;
+  }
+  
+  .login-container {
+    margin: 1rem;
+    border-radius: 1.5rem;
+  }
+  
+  .car-float {
+    animation: none;
+  }
+  
+  .title-animation {
+    font-size: 2rem;
+  }
+}
+
+/* Loading State */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s ease;
+}

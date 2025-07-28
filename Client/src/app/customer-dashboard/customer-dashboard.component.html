@@ -1,0 +1,560 @@
+<div class="min-h-screen bg-gradient-to-br from-black via-gray-900 via-green-900 to-black flex">
+  <!-- Sidebar -->
+  <div class="w-72 bg-white/10 backdrop-blur-xl border-r border-white/20 shadow-2xl">
+    <!-- User Info -->
+    <div class="p-6 border-b border-white/20">
+      <div class="text-xs text-green-400 uppercase tracking-wider mb-2">CUSTOMER</div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="mt-6">
+      <div class="px-6 space-y-3">
+        <button 
+          (click)="setActiveTab('dashboard')"
+          [class]="activeTab === 'dashboard' ? 'bg-green-500 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+          </svg>
+          Dashboard
+        </button>
+        
+        <button 
+          (click)="setActiveTab('profile')"
+          [class]="activeTab === 'profile' ? 'bg-green-500 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          Update Details
+        </button>
+        
+        <button 
+          (click)="setActiveTab('vehicles')"
+          [class]="activeTab === 'vehicles' ? 'bg-green-500 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+          </svg>
+          My Vehicles
+        </button>
+        
+        <button 
+          (click)="setActiveTab('place-order')"
+          [class]="activeTab === 'place-order' ? 'bg-green-800 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Place Order
+        </button>
+        
+        <button 
+          (click)="setActiveTab('orders')"
+          [class]="activeTab === 'orders' ? 'bg-green-500 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          Order History
+        </button>
+        
+        <button 
+          (click)="setActiveTab('payments')"
+          [class]="activeTab === 'payments' ? 'bg-green-500 text-white shadow-lg shadow-green-500/25' : 'text-green-400 hover:text-white hover:bg-green-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+          </svg>
+          Payments
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1">
+    <!-- Header -->
+    <div class="bg-white/10 backdrop-blur-xl border-b border-white/20 px-8 py-6 shadow-lg">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold text-white drop-shadow-lg">Welcome, {{userProfile?.fullName || 'User'}}</h1>
+          <p class="text-gray-200 mt-1">Manage your car wash services with ease.</p>
+        </div>
+        <button (click)="logout()" class="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-green-500/20 text-white px-6 py-3 rounded-xl transition-all duration-200 shadow-xl">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="p-8">
+      <!-- Dashboard Tab -->
+      <div *ngIf="activeTab === 'dashboard'">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Profile Details Card -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 cursor-pointer shadow-xl" (click)="setActiveTab('profile')">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Profile Details</h3>
+            <p class="text-gray-200 text-sm">View and update your personal information.</p>
+          </div>
+
+          <!-- Add Vehicle Card -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 cursor-pointer shadow-xl" (click)="openAddVehicleModal()">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Add Vehicle</h3>
+            <p class="text-gray-200 text-sm">Add a new vehicle to your account.</p>
+          </div>
+
+          <!-- Place Order Card -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 cursor-pointer shadow-xl" (click)="setActiveTab('place-order')">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Place Order</h3>
+            <p class="text-gray-200 text-sm">Book a new car wash and add-ons.</p>
+          </div>
+
+          <!-- Order History Card -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 cursor-pointer shadow-xl" (click)="setActiveTab('orders')">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Order History</h3>
+            <p class="text-gray-200 text-sm">View your past car wash orders.</p>
+          </div>
+        </div>
+
+        <!-- Payment and Receipt Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Payment Pending -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300 shadow-xl">
+            <h3 class="text-white font-semibold mb-6">Payment Pending</h3>
+            <div class="text-center py-8">
+              <div class="text-5xl font-bold text-green-400 mb-6">$30.00</div>
+              <button class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+                Make Payment
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Receipt -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300 shadow-xl">
+            <h3 class="text-white font-semibold mb-6">Recent Receipt</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="text-white font-medium text-lg">Gold Package</div>
+                <div class="text-gray-200 text-sm">March 15, 2024</div>
+              </div>
+              <button class="text-green-400 hover:text-green-300 text-sm transition-all duration-200 flex items-center">
+                View 
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Tab -->
+      <div *ngIf="activeTab === 'profile'" class="max-w-2xl">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Profile Details</h2>
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-xl">
+          <div class="space-y-6">
+            <div>
+              <label class="block text-green-400 font-medium mb-3">Full Name</label>
+              <input type="text" [(ngModel)]="userProfile.fullName" class="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+            </div>
+            <div>
+              <label class="block text-green-400 font-medium mb-3">Email</label>
+              <input type="email" [(ngModel)]="userProfile.email" readonly class="w-full px-4 py-3 bg-white/10 text-gray-300 border border-white/30 rounded-xl cursor-not-allowed">
+            </div>
+            <div>
+              <label class="block text-green-400 font-medium mb-3">Phone</label>
+              <input type="tel" [(ngModel)]="userProfile.phone" class="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+            </div>
+            
+            <!-- Error Message -->
+            <div *ngIf="profileError" class="p-3 bg-red-500/20 border border-red-500/50 rounded-xl">
+              <p class="text-red-300 text-sm">{{ profileError }}</p>
+            </div>
+            
+            <button (click)="updateProfile()" [disabled]="isLoading" class="bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-8 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+              <span *ngIf="isLoading">Updating...</span>
+              <span *ngIf="!isLoading">Update Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicles Tab -->
+      <div *ngIf="activeTab === 'vehicles'">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-white drop-shadow-lg">My Vehicles</h2>
+          <button (click)="openAddVehicleModal()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+            + Add Vehicle
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let vehicle of vehicles" class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 shadow-xl">
+            <img [src]="vehicle.imageUrl" [alt]="vehicle.make + ' ' + vehicle.model" class="w-full h-32 object-contain mb-4">
+            <h3 class="text-white font-semibold mb-2">{{vehicle.make}} {{vehicle.model}}</h3>
+            <p class="text-green-400">{{vehicle.licensePlate || vehicle.numberPlate}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Place Order Tab -->
+      <div *ngIf="activeTab === 'place-order'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Place New Order</h2>
+        
+        <!-- Available Add-ons -->
+        <div class="mb-8">
+          <h3 class="text-white font-semibold text-lg mb-4">Available Add-ons</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+            <div *ngFor="let addon of addons" 
+                 (click)="toggleAddon(addon.id)" 
+                 [class]="isAddonSelected(addon.id) ? 'border-green-500 bg-green-500/30 shadow-green-500/50' : 'border-white/20 hover:border-green-500/50'"
+                 class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 cursor-pointer transition-all duration-300 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 shadow-xl rounded-2xl flex flex-col items-center justify-center">
+              <div class="text-center">
+                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-1 shadow-lg shadow-green-500/25">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <h4 class="text-white font-medium text-xs mb-1">{{addon.name}}</h4>
+                <p class="text-green-400 font-bold text-xs">${{addon.price}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <div class="xl:col-span-1 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-xl">
+            <h3 class="text-white font-semibold mb-6">Order Details</h3>
+            
+            <div class="space-y-6">
+              <div>
+                <label class="block text-green-400 font-medium mb-3">Select Vehicle</label>
+                <select [(ngModel)]="newOrder.vehicleId" class="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+                  <option value="" class="bg-gray-800 text-white">Choose a vehicle</option>
+                  <option *ngFor="let vehicle of vehicles" [value]="vehicle.id" class="bg-gray-800 text-white">{{vehicle.make}} {{vehicle.model}} ({{vehicle.licensePlate}})</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-green-400 font-medium mb-3">Wash Package</label>
+                <select [(ngModel)]="newOrder.washPackageId" class="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+                  <option value="" class="bg-gray-800 text-white">Choose a package</option>
+                  <option *ngFor="let package of washPackages" [value]="package.id" class="bg-gray-800 text-white">{{package.name}} - ${{package.price}}</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-green-400 font-medium mb-3">Scheduled Date</label>
+                <input type="datetime-local" [(ngModel)]="newOrder.orderDate" class="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+              </div>
+              
+              <!-- Error Message -->
+              <div *ngIf="placeOrderError" class="p-3 bg-red-500/20 border border-red-500/50 rounded-xl">
+                <p class="text-red-300 text-sm">{{ placeOrderError }}</p>
+              </div>
+              
+              <button (click)="placeOrder()" [disabled]="!newOrder.vehicleId || !newOrder.washPackageId || !newOrder.orderDate || isLoading" class="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white py-3 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+                <span *ngIf="isLoading">Placing Order...</span>
+                <span *ngIf="!isLoading">Place Order</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="xl:col-span-2 space-y-6">
+            <h3 class="text-white font-semibold text-xl">Available Packages</h3>
+            <div *ngFor="let package of washPackages" class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 shadow-xl">
+              <div class="flex justify-between items-start mb-3">
+                <h4 class="text-white font-medium text-lg">{{package.name}}</h4>
+                <span class="text-green-400 font-bold text-xl">${{package.price}}</span>
+              </div>
+              <p class="text-gray-200">{{package.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Tab -->
+      <div *ngIf="activeTab === 'orders'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Order History</h2>
+        
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-xl">
+          <div *ngIf="orders.length === 0" class="p-8 text-center">
+            <p class="text-gray-400">No orders found. Place your first order to see it here.</p>
+          </div>
+          <table *ngIf="orders.length > 0" class="w-full">
+            <thead class="bg-green-500/20">
+              <tr>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Vehicle</th>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Package</th>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Date</th>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Status</th>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Amount</th>
+                <th class="px-6 py-4 text-left text-green-400 font-semibold">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders" class="border-t border-white/10 hover:bg-green-500/10 transition-all duration-200">
+                <td class="px-6 py-4 text-white">{{order.vehicle?.make}} {{order.vehicle?.model}}</td>
+                <td class="px-6 py-4 text-white">{{order.washPackage?.name}}</td>
+                <td class="px-6 py-4 text-white">{{order.scheduledTime | date:'short'}}</td>
+                <td class="px-6 py-4">
+                  <span [class]="order.status === 'Completed' ? 'bg-green-500/20 text-green-400' : order.status === 'InProgress' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-blue-500/20 text-blue-400'" class="px-3 py-1 rounded-full text-xs font-medium">
+                    {{order.status}}
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-white font-semibold">${{order.totalAmount}}</td>
+                <td class="px-6 py-4">
+                  <div class="flex flex-wrap gap-1">
+                    <button *ngIf="order.status === 'Completed' && order.paymentStatus !== 'Paid' && !order.razorpayOrderId" (click)="openPaymentModal(order)" class="bg-green-500/20 border border-green-500/50 hover:bg-green-500/30 text-green-400 px-2 py-1 rounded-lg text-xs transition-all duration-200">
+                      Pay Now
+                    </button>
+                    <span *ngIf="order.status === 'Completed' && (order.paymentStatus === 'Paid' || order.razorpayOrderId)" class="bg-blue-500/20 border border-blue-500/50 text-blue-400 px-2 py-1 rounded-lg text-xs">
+                      {{order.paymentStatus === 'Paid' ? 'Paid' : 'Processing'}}
+                    </span>
+                    <button *ngIf="order.status === 'Completed' || order.status === 'Paid'" (click)="openReceiptModal(order)" class="bg-blue-500/20 border border-blue-500/50 hover:bg-blue-500/30 text-blue-400 px-2 py-1 rounded-lg text-xs transition-all duration-200">
+                      Receipt
+                    </button>
+                    <button *ngIf="(order.status === 'Paid' || order.status === 'Completed') && !order.isRated && !ratedOrders.has(order.id)" (click)="openRatingModal(order)" class="bg-yellow-500/20 border border-yellow-500/50 hover:bg-yellow-500/30 text-yellow-400 px-2 py-1 rounded-lg text-xs transition-all duration-200">
+                      Rate
+                    </button>
+                    <span *ngIf="order.isRated || ratedOrders.has(order.id)" class="bg-gray-500/20 border border-gray-500/50 text-gray-400 px-2 py-1 rounded-lg text-xs">
+                      Rated
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Payments Tab -->
+      <div *ngIf="activeTab === 'payments'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Payments</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-xl">
+            <h3 class="text-white font-semibold mb-6">Payment Pending</h3>
+            <div class="text-center py-8">
+              <div class="text-5xl font-bold text-green-400 mb-6">$30.00</div>
+              <button class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+                Make Payment
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-xl">
+            <h3 class="text-white font-semibold mb-6">Recent Receipts</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-4 border-b border-green-500/20">
+                <div>
+                  <div class="text-white font-medium">Gold Package</div>
+                  <div class="text-gray-200 text-sm">March 15, 2024</div>
+                </div>
+                <button class="text-green-400 hover:text-green-300 text-sm transition-all duration-200">View</button>
+              </div>
+              <div class="flex justify-between items-center py-4 border-b border-green-500/20">
+                <div>
+                  <div class="text-white font-medium">Premium Wash</div>
+                  <div class="text-gray-200 text-sm">March 10, 2024</div>
+                </div>
+                <button class="text-green-400 hover:text-green-300 text-sm transition-all duration-200">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Vehicle Modal -->
+  <div *ngIf="showAddVehicleModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <h3 class="text-2xl font-bold text-white mb-6">Add New Vehicle</h3>
+      
+      <div class="space-y-4">
+        <input [(ngModel)]="newVehicle.make" placeholder="Make (e.g., BMW)" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+        <input [(ngModel)]="newVehicle.model" placeholder="Model (e.g., X5)" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+        <input [(ngModel)]="newVehicle.numberPlate" placeholder="License Plate (e.g., ABC-123)" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+        <input [(ngModel)]="newVehicle.imageUrl" placeholder="Image URL (optional)" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200">
+      </div>
+      
+      <!-- Error Message -->
+      <div *ngIf="addVehicleError" class="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl">
+        <p class="text-red-300 text-sm">{{ addVehicleError }}</p>
+      </div>
+      
+      <div class="flex space-x-4 mt-8">
+        <button (click)="closeAddVehicleModal()" class="flex-1 px-4 py-3 border border-white/30 text-white rounded-xl hover:bg-white/10 transition-all duration-200">
+          Cancel
+        </button>
+        <button (click)="addVehicle()" [disabled]="!newVehicle.make || !newVehicle.model || !newVehicle.numberPlate || isLoading" class="flex-1 px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+          <span *ngIf="isLoading">Adding...</span>
+          <span *ngIf="!isLoading">Add Vehicle</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div *ngIf="showPaymentModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <h3 class="text-2xl font-bold text-white mb-6">Payment</h3>
+      
+      <div class="space-y-4 mb-8">
+        <div class="flex justify-between text-white">
+          <span>Service:</span>
+          <span>{{selectedOrderForPayment?.washPackage?.name}}</span>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Vehicle:</span>
+          <span>{{selectedOrderForPayment?.vehicle?.make}} {{selectedOrderForPayment?.vehicle?.model}}</span>
+        </div>
+        <div class="flex justify-between text-white font-bold text-lg">
+          <span>Total Amount:</span>
+          <span class="text-green-400">${{selectedOrderForPayment?.totalAmount}}</span>
+        </div>
+        
+        <!-- Error Message -->
+        <div *ngIf="paymentError" class="p-3 bg-red-500/20 border border-red-500/50 rounded-xl">
+          <p class="text-red-300 text-sm">{{ paymentError }}</p>
+        </div>
+      </div>
+      
+      <div class="flex space-x-2">
+        <button (click)="closePaymentModal()" class="flex-1 px-4 py-3 border border-white/30 text-white rounded-xl hover:bg-white/10 transition-all duration-200">
+          Cancel
+        </button>
+        <button (click)="processRazorpayPayment()" class="flex-1 px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+          Pay with Razorpay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Receipt Modal -->
+  <div *ngIf="showReceiptModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <h3 class="text-2xl font-bold text-white mb-6">Receipt</h3>
+      
+      <div *ngIf="selectedReceipt; else noReceipt" class="space-y-4 mb-8">
+        <div class="flex justify-between text-white">
+          <span>Receipt Number:</span>
+          <span class="text-green-400">{{selectedReceipt.receiptNumber}}</span>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Order ID:</span>
+          <span>#{{selectedReceipt.orderId}}</span>
+        </div>
+        <div class="text-white">
+          <span class="font-medium text-green-400 block mb-2">Service Details:</span>
+          <div class="bg-white/10 rounded-lg p-3 text-sm whitespace-pre-line">{{selectedReceipt.details}}</div>
+        </div>
+        <div class="flex justify-between text-white">
+          <span>Date Created:</span>
+          <span>{{selectedReceipt.createdAt | date:'medium'}}</span>
+        </div>
+        <div class="flex justify-between text-white font-bold text-lg border-t border-green-500/30 pt-4">
+          <span>Order Status:</span>
+          <span class="text-green-400">{{selectedReceipt.orderStatus}}</span>
+        </div>
+      </div>
+      
+      <ng-template #noReceipt>
+        <div class="text-center text-white mb-8">
+          <p>Loading receipt...</p>
+        </div>
+      </ng-template>
+      
+      <div class="flex justify-center">
+        <button (click)="closeReceiptModal()" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating Modal -->
+  <div *ngIf="showRatingModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <h3 class="text-2xl font-bold text-white mb-6">Rate Your Service</h3>
+      
+      <div class="space-y-6 mb-8">
+        <div class="text-center">
+          <p class="text-white mb-4">How was your car wash experience?</p>
+          <div class="flex justify-center space-x-2">
+            <button *ngFor="let star of [1,2,3,4,5]" 
+                    (click)="rating.rating = star"
+                    [class]="star <= rating.rating ? 'text-yellow-400' : 'text-gray-400'"
+                    class="text-3xl hover:text-yellow-400 transition-all duration-200">
+              ★
+            </button>
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-green-400 font-medium mb-3">Comments (Optional)</label>
+          <textarea [(ngModel)]="rating.comment" 
+                    placeholder="Share your experience..."
+                    class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-green-500 focus:outline-none transition-all duration-200 h-24 resize-none"></textarea>
+        </div>
+        
+        <div *ngIf="ratingError" class="p-3 bg-red-500/20 border border-red-500/50 rounded-xl">
+          <p class="text-red-300 text-sm">{{ ratingError }}</p>
+        </div>
+      </div>
+      
+      <div class="flex space-x-4">
+        <button (click)="closeRatingModal()" [disabled]="isLoading" class="flex-1 px-4 py-3 border border-white/30 text-white rounded-xl hover:bg-white/10 disabled:opacity-50 transition-all duration-200">
+          Cancel
+        </button>
+        <button (click)="submitRating()" [disabled]="isLoading" class="flex-1 px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-600 text-white rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25">
+          <span *ngIf="isLoading">Submitting...</span>
+          <span *ngIf="!isLoading">Submit Rating</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Toaster -->
+  <div *ngIf="showToaster" class="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-4 rounded-xl shadow-lg shadow-green-500/25 flex items-center space-x-3 animate-slide-in">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+    <span class="font-medium">{{ successMessage }}</span>
+    <button (click)="closeToaster()" class="ml-2 text-white hover:text-gray-200 transition">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,427 @@
+<div class="min-h-screen bg-gradient-to-br from-black via-gray-900 via-rose-900 to-black flex">
+  <!-- Sidebar -->
+  <div class="w-72 bg-white/10 backdrop-blur-xl border-r border-white/20 shadow-2xl">
+    <!-- User Info -->
+    <div class="p-6 border-b border-white/20">
+      <div class="text-xs text-rose-400 uppercase tracking-wider mb-2">ADMIN</div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="mt-6">
+      <div class="px-6 space-y-3">
+        <button 
+          (click)="setActiveTab('dashboard')"
+          [class]="activeTab === 'dashboard' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+          </svg>
+          Dashboard
+        </button>
+        
+        <button 
+          (click)="setActiveTab('wash-packages')"
+          [class]="activeTab === 'wash-packages' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Wash Packages
+        </button>
+        
+        <button 
+          (click)="setActiveTab('addons')"
+          [class]="activeTab === 'addons' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Addons
+        </button>
+        
+        <button 
+          (click)="setActiveTab('washers')"
+          [class]="activeTab === 'washers' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A2.996 2.996 0 0 0 17.06 6H16c-.8 0-1.54.37-2.01.99L12 10l-1.99-3.01A2.996 2.996 0 0 0 8 6H6.94c-1.4 0-2.59.85-3.1 2.15L1.5 16H4v6h2v-6h2.5l2.5-3.5L13.5 16H16v6h4z"/>
+          </svg>
+          Washers
+        </button>
+        
+        <button 
+          (click)="setActiveTab('customers')"
+          [class]="activeTab === 'customers' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          Customers
+        </button>
+        
+        <button 
+          (click)="setActiveTab('orders')"
+          [class]="activeTab === 'orders' ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/25' : 'text-rose-400 hover:text-white hover:bg-rose-500/20'"
+          class="w-full flex items-center px-4 py-4 text-sm font-medium rounded-xl transition-all duration-200">
+          <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          Orders
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1">
+    <!-- Header -->
+    <div class="bg-white/10 backdrop-blur-xl border-b border-white/20 px-8 py-6 shadow-lg">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold text-white drop-shadow-lg">Admin Dashboard</h1>
+          <p class="text-gray-200 mt-1">Manage your car wash business efficiently.</p>
+        </div>
+        <button (click)="logout()" class="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-rose-500/20 text-white px-6 py-3 rounded-xl transition-all duration-200 shadow-xl">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="p-8">
+      <!-- Dashboard Tab -->
+      <div *ngIf="activeTab === 'dashboard'">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Total Customers -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-rose-500 rounded-xl flex items-center justify-center shadow-lg shadow-rose-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Total Customers</h3>
+            <p class="text-3xl font-bold text-rose-400">{{dashboardStats.totalCustomers}}</p>
+          </div>
+
+          <!-- Total Washers -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A2.996 2.996 0 0 0 17.06 6H16c-.8 0-1.54.37-2.01.99L12 10l-1.99-3.01A2.996 2.996 0 0 0 8 6H6.94c-1.4 0-2.59.85-3.1 2.15L1.5 16H4v6h2v-6h2.5l2.5-3.5L13.5 16H16v6h4z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Total Washers</h3>
+            <p class="text-3xl font-bold text-blue-400">{{dashboardStats.totalWashers}}</p>
+            <p class="text-sm text-gray-300">{{dashboardStats.activeWashers}} active</p>
+          </div>
+
+          <!-- Wash Packages -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Wash Packages</h3>
+            <p class="text-3xl font-bold text-green-400">{{dashboardStats.totalWashPackages}}</p>
+          </div>
+
+          <!-- Total Addons -->
+          <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/25">
+                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-white font-semibold mb-2">Total Addons</h3>
+            <p class="text-3xl font-bold text-yellow-400">{{dashboardStats.totalAddons}}</p>
+          </div>
+        </div>
+
+        <!-- Order Stats -->
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-xl">
+          <h3 class="text-white font-semibold text-xl mb-6">Order Statistics</h3>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <p class="text-3xl font-bold text-rose-400 mb-2">{{dashboardStats.orderStats.totalOrders}}</p>
+              <p class="text-gray-300">Total Orders</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-yellow-400 mb-2">{{dashboardStats.orderStats.pendingOrders}}</p>
+              <p class="text-gray-300">Pending Orders</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-green-400 mb-2">{{dashboardStats.orderStats.completedOrders}}</p>
+              <p class="text-gray-300">Completed Orders</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-blue-400 mb-2">${{dashboardStats.orderStats.totalRevenue}}</p>
+              <p class="text-gray-300">Total Revenue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wash Packages Tab -->
+      <div *ngIf="activeTab === 'wash-packages'">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-white drop-shadow-lg">Wash Packages</h2>
+          <button (click)="openPackageModal()" class="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-rose-500/20 text-white px-6 py-3 rounded-xl transition-all duration-200 shadow-xl">
+            + Add Package
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div *ngFor="let package of washPackages" class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-white font-semibold text-lg">{{package.name}}</h3>
+              <span class="text-2xl font-bold text-rose-200">${{package.price}}</span>
+            </div>
+            <p class="text-gray-300 mb-4">{{package.description}}</p>
+            <div class="flex space-x-2">
+              <button (click)="openPackageModal(package)" class="flex-1 bg-blue-500/50 border border-blue-500 hover:bg-blue-500/30 text-white px-3 py-2 rounded-lg text-sm transition-all duration-200">
+                Edit
+              </button>
+              <button (click)="deletePackage(package)" class="flex-1 bg-red-500/50 border border-red-500/50 hover:bg-red-500/30 text-white px-3 py-2 rounded-lg text-sm transition-all duration-200">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Addons Tab -->
+      <div *ngIf="activeTab === 'addons'">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-3xl font-bold text-white drop-shadow-lg">Addons</h2>
+          <button (click)="openAddonModal()" class="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-rose-500/20 text-white px-6 py-3 rounded-xl transition-all duration-200 shadow-xl">
+            + Add Addon
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div *ngFor="let addon of addons" class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-rose-500/50 hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300 shadow-xl">
+            <div class="text-center mb-4">
+              <div class="w-12 h-12 bg-rose-500 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg shadow-rose-500/25">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <h3 class="text-white font-semibold mb-2">{{addon.name}}</h3>
+              <p class="text-2xl font-bold text-rose-400 mb-2">${{addon.price}}</p>
+              <p class="text-gray-300 text-sm mb-4">{{addon.description}}</p>
+            </div>
+            <div class="flex space-x-2">
+              <button (click)="openAddonModal(addon)" class="flex-1 bg-blue-500/20 border border-blue-500/50 hover:bg-blue-500/30 text-blue-400 px-2 py-1 rounded-lg text-xs transition-all duration-200">
+                Edit
+              </button>
+              <button (click)="deleteAddon(addon)" class="flex-1 bg-red-500/20 border border-red-500/50 hover:bg-red-500/30 text-red-400 px-2 py-1 rounded-lg text-xs transition-all duration-200">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Washers Tab -->
+      <div *ngIf="activeTab === 'washers'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Washers Management</h2>
+        
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-xl">
+          <table class="w-full">
+            <thead class="bg-rose-500/20">
+              <tr>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Name</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Email</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Phone</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Orders</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Status</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let washer of washers" class="border-t border-white/10 hover:bg-rose-500/10 transition-all duration-200">
+                <td class="px-6 py-4 text-white">{{washer.fullName || washer.name}}</td>
+                <td class="px-6 py-4 text-white">{{washer.email}}</td>
+                <td class="px-6 py-4 text-white">{{washer.phone}}</td>
+                <td class="px-6 py-4 text-white">{{washer.orderCount || washer.ordersCompleted || 0}}</td>
+                <td class="px-6 py-4">
+                  <span [class]="washer.isActive ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'" class="px-3 py-1 rounded-full text-xs font-medium">
+                    {{washer.isActive ? 'Active' : 'Inactive'}}
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <button (click)="toggleWasherStatus(washer)" [class]="washer.isActive ? 'bg-red-500/20 border-red-500/50 hover:bg-red-500/30 text-red-400' : 'bg-green-500/20 border-green-500/50 hover:bg-green-500/30 text-green-400'" class="px-3 py-1 rounded-lg text-xs border transition-all duration-200">
+                    {{washer.isActive ? 'Deactivate' : 'Activate'}}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Customers Tab -->
+      <div *ngIf="activeTab === 'customers'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Customers Management</h2>
+        
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-xl">
+          <table class="w-full">
+            <thead class="bg-rose-500/20">
+              <tr>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Name</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Email</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Phone</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Orders</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Vehicles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers" class="border-t border-white/10 hover:bg-rose-500/10 transition-all duration-200">
+                <td class="px-6 py-4 text-white">{{customer.fullName || customer.name}}</td>
+                <td class="px-6 py-4 text-white">{{customer.email}}</td>
+                <td class="px-6 py-4 text-white">{{customer.phoneNumber || customer.phone}}</td>
+                <td class="px-6 py-4 text-white">{{customer.orderCount || customer.totalOrders || 0}}</td>
+                <td class="px-6 py-4 text-white">{{customer.vehicleCount || customer.totalVehicles || 0}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Tab -->
+      <div *ngIf="activeTab === 'orders'">
+        <h2 class="text-3xl font-bold text-white mb-8 drop-shadow-lg">Orders Management</h2>
+        
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-xl">
+          <table class="w-full">
+            <thead class="bg-rose-500/20">
+              <tr>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Order ID</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Customer</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Washer</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Vehicle</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Package</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Addons</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Amount</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Status</th>
+                <th class="px-6 py-4 text-left text-rose-400 font-semibold">Scheduled</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders" class="border-t border-white/10 hover:bg-rose-500/10 transition-all duration-200">
+                <td class="px-6 py-4 text-white">#{{order.id}}</td>
+                <td class="px-6 py-4 text-white">
+                  <div>
+                    <div class="font-medium">{{order.customer?.fullName}}</div>
+                    <div class="text-sm text-gray-300">{{order.customer?.email}}</div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-white">
+                  <div>
+                    <div class="font-medium">{{order.washer?.fullName}}</div>
+                    <div class="text-sm text-gray-300">{{order.washer?.email}}</div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-white">
+                  <div>
+                    <div class="font-medium">{{order.vehicle?.make}} {{order.vehicle?.model}}</div>
+                    <div class="text-sm text-gray-300">{{order.vehicle?.licensePlate}}</div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-white">
+                  <div>
+                    <div class="font-medium">{{order.washPackage?.name}}</div>
+                    <div class="text-sm text-rose-400">${{order.washPackage?.price}}</div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-white">
+                  <div *ngIf="order.addons?.length > 0; else noAddons">
+                    <div *ngFor="let addon of order.addons" class="text-sm">
+                      {{addon.name}} <span class="text-rose-400">${{addon.price}}</span>
+                    </div>
+                  </div>
+                  <ng-template #noAddons>
+                    <span class="text-gray-400 text-sm">No addons</span>
+                  </ng-template>
+                </td>
+                <td class="px-6 py-4 text-white font-semibold">${{order.totalAmount}}</td>
+                <td class="px-6 py-4">
+                  <span [class]="order.status === 'Paid' ? 'bg-green-500/20 text-green-400' : order.status === 'InProgress' ? 'bg-yellow-500/20 text-yellow-400' : order.status === 'Assigned' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'" class="px-3 py-1 rounded-full text-xs font-medium">
+                    {{order.status}}
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-white text-sm">{{order.scheduledTime | date:'short'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Package Modal -->
+      <div *ngIf="showPackageModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-6">{{selectedPackage ? 'Edit' : 'Add'}} Wash Package</h3>
+          
+          <div class="space-y-4">
+            <input [(ngModel)]="newPackage.name" placeholder="Package Name" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200">
+            <input [(ngModel)]="newPackage.price" type="number" placeholder="Price" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200">
+            <textarea [(ngModel)]="newPackage.description" placeholder="Description" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200 h-24 resize-none"></textarea>
+          </div>
+          
+          <div class="flex space-x-4 mt-8">
+            <button (click)="closePackageModal()" class="flex-1 px-4 py-3 bg-white/10 border border-white/30 text-white rounded-xl hover:bg-white/20 transition-all duration-200">
+              Cancel
+            </button>
+            <button (click)="savePackage()" class="flex-1 px-4 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl transition-all duration-200 shadow-lg shadow-rose-500/25">
+              {{selectedPackage ? 'Update' : 'Create'}}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Addon Modal -->
+      <div *ngIf="showAddonModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-6">{{selectedAddon ? 'Edit' : 'Add'}} Addon</h3>
+          
+          <div class="space-y-4">
+            <input [(ngModel)]="newAddon.name" placeholder="Addon Name" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200">
+            <input [(ngModel)]="newAddon.price" type="number" placeholder="Price" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200">
+            <textarea [(ngModel)]="newAddon.description" placeholder="Description" class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/70 border border-white/30 rounded-xl focus:border-rose-500 focus:outline-none transition-all duration-200 h-24 resize-none"></textarea>
+          </div>
+          
+          <div class="flex space-x-4 mt-8">
+            <button (click)="closeAddonModal()" class="flex-1 px-4 py-3 bg-white/10 border border-white/30 text-white rounded-xl hover:bg-white/20 transition-all duration-200">
+              Cancel
+            </button>
+            <button (click)="saveAddon()" class="flex-1 px-4 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl transition-all duration-200 shadow-lg shadow-rose-500/25">
+              {{selectedAddon ? 'Update' : 'Create'}}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Toaster -->
+      <div *ngIf="showToaster" class="fixed top-4 right-4 z-50 bg-rose-500 text-white px-6 py-4 rounded-xl shadow-lg shadow-rose-500/25 flex items-center space-x-3 animate-slide-in">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span class="font-medium">{{ successMessage }}</span>
+        <button (click)="closeToaster()" class="ml-2 text-white hover:text-gray-200 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
